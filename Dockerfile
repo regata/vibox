@@ -1,5 +1,8 @@
 FROM debian:trixie-slim
 
+# if you change this, review .devcontainer/devcontainer.json
+ARG NAME=vibox
+
 # Claude IDE integration needs `ps -p` command which is installed via procps
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -11,14 +14,14 @@ RUN apt-get update && \
     && apt-get clean
 
 # setup user
-RUN groupadd -r vibox \
-    && useradd -ms /bin/bash -g vibox -G sudo vibox
+RUN groupadd -r $NAME \
+    && useradd -ms /bin/bash -g $NAME -G sudo $NAME
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-RUN chown -R vibox /home/vibox/
+RUN chown -R $NAME /home/$NAME/
 
-USER vibox
-ENV HOME=/home/vibox
-WORKDIR /home/vibox/vibox
+USER $NAME
+ENV HOME=/home/$NAME
+WORKDIR /home/$NAME/$NAME
 
 RUN curl -fsSL https://claude.ai/install.sh | bash
 ENV CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
