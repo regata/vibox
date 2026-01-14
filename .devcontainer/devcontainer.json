@@ -1,0 +1,32 @@
+{
+  "name": "vibox",
+  "build": {
+    "args": {
+      "-t": "vibox"
+    },
+    "context": "..",
+    "dockerfile": "../Dockerfile"
+  },
+  "workspaceFolder": "/home/vibox/vibox",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/vibox/vibox,type=bind,consistency=cached",
+  "mounts": [
+    "source=${localEnv:HOME}/.claude,target=/home/vibox/.claude,type=bind",
+    "source=${localEnv:HOME}/.claude.json,target=/home/vibox/.claude.json,type=bind"
+  ],
+  "runArgs": [
+    "--rm",
+    "--name=vibox"
+  ],
+  "remoteUser": "vibox",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code"
+      ],
+      "settings": {
+        "terminal.integrated.scrollback": 100000,
+        "editor.formatOnSave": true
+      }
+    }
+  }
+}
