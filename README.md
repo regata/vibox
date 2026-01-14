@@ -1,3 +1,3 @@
 # Vibox
 
-Devcontainer for vibe coding
+Devcontainer template for vibe coding
