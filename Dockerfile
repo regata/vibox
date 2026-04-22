@@ -11,7 +11,11 @@ RUN apt-get update && \
         ca-certificates \
         curl \
         git \
+        python3 \
+        sudo \
     && apt-get clean
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
 
 # setup user
 RUN groupadd -r $NAME \
