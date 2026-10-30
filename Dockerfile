@@ -27,6 +27,10 @@ USER $NAME
 ENV HOME=/home/$NAME
 WORKDIR /home/$NAME/$NAME
 
-RUN curl -fsSL https://claude.ai/install.sh | bash
-ENV CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+# RUN curl -fsSL https://claude.ai/install.sh | bash
+# ENV CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 ENV PATH=$HOME/.local/bin:$PATH
+
+# Install Codex
+RUN curl -fsSL https://chatgpt.com/codex/install.sh | bash
+ENV VISUAL="code --wait"
