@@ -1,24 +1,21 @@
 {
   "name": "vibox",
   "build": {
-    "args": {
-      "-t": "vibox"
-    },
     "context": "..",
     "dockerfile": "../Dockerfile"
   },
-  "workspaceFolder": "/home/vibox/vibox",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/home/vibox/vibox,type=bind,consistency=cached",
+  "workspaceFolder": "/home/agent/vibox",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/agent/vibox,type=bind,consistency=cached",
   "mounts": [
-    "source=vibox-codex,target=/home/vibox/.codex,type=volume"
-    // "source=${localEnv:HOME}/.claude,target=/home/vibox/.claude,type=bind",
-    // "source=${localEnv:HOME}/.claude.json,target=/home/vibox/.claude.json,type=bind"
+    "source=vibox,target=/home/agent/.codex,type=volume"
+    // "source=${localEnv:HOME}/.claude,target=/home/agent/.claude,type=bind",
+    // "source=${localEnv:HOME}/.claude.json,target=/home/agent/.claude.json,type=bind"
   ],
   "runArgs": [
     "--rm",
     "--name=vibox"
   ],
-  "remoteUser": "vibox",
+  "remoteUser": "agent",
   "customizations": {
     "vscode": {
       "extensions": [

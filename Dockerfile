@@ -1,7 +1,7 @@
 FROM debian:trixie-slim
 
 # if you change this, review .devcontainer/devcontainer.json
-ARG NAME=vibox
+ARG USER=agent
 
 # Claude IDE integration needs `ps -p` command which is installed via procps
 RUN apt-get update && \
@@ -18,14 +18,14 @@ RUN apt-get update && \
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
 
 # setup user
-RUN groupadd -r $NAME \
-    && useradd -ms /bin/bash -g $NAME -G sudo $NAME
+RUN groupadd -r $USER \
+    && useradd -ms /bin/bash -g $USER -G sudo $USER
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-RUN chown -R $NAME /home/$NAME/
+RUN chown -R $USER /home/$USER/
 
-USER $NAME
-ENV HOME=/home/$NAME
-WORKDIR /home/$NAME/$NAME
+USER $USER
+ENV HOME=/home/$USER
+WORKDIR /home/$USER/vibox
 
 # RUN curl -fsSL https://claude.ai/install.sh | bash
 # ENV CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
