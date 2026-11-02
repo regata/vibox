@@ -15,7 +15,7 @@ VSCode Dev Container sandbox for vibe coding. It mounts `~/.claude` and `~/.clau
     code ./project-name
     ```
 
-3. Optionally rename `vibox` references to `project-name`. Paths in devcontainer.json must match the Dockerfile's `NAME` arg.
+3. Optionally rename `vibox` references to `project-name`. Paths in devcontainer.json must match the Dockerfile's `USER` arg.
 
 4. Run `Reopen in Container` from Command Palette in VSCode.
 
